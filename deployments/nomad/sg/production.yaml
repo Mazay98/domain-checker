@@ -1,0 +1,11 @@
+region: "sg-02"
+datacenter: "sg-02-la"
+namespace: "production"
+count: 1
+canary_count: 0
+
+env: "production"
+max_per_host: 1
+
+cpu_limit: 500
+memory_limit: 500

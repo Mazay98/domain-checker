@@ -1,0 +1,106 @@
+Subject:CN = *.google.com
+Issuer:C = US, O = Google Trust Services LLC, CN = GTS CA 1C3
+Version:2
+Serial Number:4479362a4e92ecbb120000000005f080
+Signature Algorithm:sha256WithRSAEncryption
+Public Key Algorithm:id-ecPublicKey
+X509v3 Key Usage:Digital Signature
+X509v3 Extended Key Usage:TLS Web Server Authentication
+X509v3 Basic Constraints:CA:FALSE
+X509v3 Subject Key Identifier:9F:A2:2B:63:8D:D6:E3:30:B7:8D:BC:E5:FB:82:51:54:3A:AD:D0:8D
+X509v3 Authority Key Identifier:keyid:8A:74:7F:AF:85:CD:EE:95:CD:3D:9C:D0:E2:46:14:F3:71:35:1D:27
+
+Authority Information Access:OCSP - URI:http://ocsp.pki.goog/gts1c3
+CA Issuers - URI:http://pki.goog/repo/certs/gts1c3.der
+
+X509v3 Subject Alternative Name:DNS:*.google.com, DNS:*.appengine.google.com, DNS:*.bdn.dev, DNS:*.cloud.google.com, DNS:*.crowdsource.google.com, DNS:*.datacompute.google.com, DNS:*.google.ca, DNS:*.google.cl, DNS:*.google.co.in, DNS:*.google.co.jp, DNS:*.google.co.uk, DNS:*.google.com.ar, DNS:*.google.com.au, DNS:*.google.com.br, DNS:*.google.com.co, DNS:*.google.com.mx, DNS:*.google.com.tr, DNS:*.google.com.vn, DNS:*.google.de, DNS:*.google.es, DNS:*.google.fr, DNS:*.google.hu, DNS:*.google.it, DNS:*.google.nl, DNS:*.google.pl, DNS:*.google.pt, DNS:*.googleadapis.com, DNS:*.googleapis.cn, DNS:*.googlevideo.com, DNS:*.gstatic.cn, DNS:*.gstatic-cn.com, DNS:googlecnapps.cn, DNS:*.googlecnapps.cn, DNS:googleapps-cn.com, DNS:*.googleapps-cn.com, DNS:gkecnapps.cn, DNS:*.gkecnapps.cn, DNS:googledownloads.cn, DNS:*.googledownloads.cn, DNS:recaptcha.net.cn, DNS:*.recaptcha.net.cn, DNS:recaptcha-cn.net, DNS:*.recaptcha-cn.net, DNS:widevine.cn, DNS:*.widevine.cn, DNS:ampproject.org.cn, DNS:*.ampproject.org.cn, DNS:ampproject.net.cn, DNS:*.ampproject.net.cn, DNS:google-analytics-cn.com, DNS:*.google-analytics-cn.com, DNS:googleadservices-cn.com, DNS:*.googleadservices-cn.com, DNS:googlevads-cn.com, DNS:*.googlevads-cn.com, DNS:googleapis-cn.com, DNS:*.googleapis-cn.com, DNS:googleoptimize-cn.com, DNS:*.googleoptimize-cn.com, DNS:doubleclick-cn.net, DNS:*.doubleclick-cn.net, DNS:*.fls.doubleclick-cn.net, DNS:*.g.doubleclick-cn.net, DNS:doubleclick.cn, DNS:*.doubleclick.cn, DNS:*.fls.doubleclick.cn, DNS:*.g.doubleclick.cn, DNS:dartsearch-cn.net, DNS:*.dartsearch-cn.net, DNS:googletraveladservices-cn.com, DNS:*.googletraveladservices-cn.com, DNS:googletagservices-cn.com, DNS:*.googletagservices-cn.com, DNS:googletagmanager-cn.com, DNS:*.googletagmanager-cn.com, DNS:googlesyndication-cn.com, DNS:*.googlesyndication-cn.com, DNS:*.safeframe.googlesyndication-cn.com, DNS:app-measurement-cn.com, DNS:*.app-measurement-cn.com, DNS:gvt1-cn.com, DNS:*.gvt1-cn.com, DNS:gvt2-cn.com, DNS:*.gvt2-cn.com, DNS:2mdn-cn.net, DNS:*.2mdn-cn.net, DNS:googleflights-cn.net, DNS:*.googleflights-cn.net, DNS:admob-cn.com, DNS:*.admob-cn.com, DNS:*.gstatic.com, DNS:*.metric.gstatic.com, DNS:*.gvt1.com, DNS:*.gcpcdn.gvt1.com, DNS:*.gvt2.com, DNS:*.gcp.gvt2.com, DNS:*.url.google.com, DNS:*.youtube-nocookie.com, DNS:*.ytimg.com, DNS:android.com, DNS:*.android.com, DNS:*.flash.android.com, DNS:g.cn, DNS:*.g.cn, DNS:g.co, DNS:*.g.co, DNS:goo.gl, DNS:www.goo.gl, DNS:google-analytics.com, DNS:*.google-analytics.com, DNS:google.com, DNS:googlecommerce.com, DNS:*.googlecommerce.com, DNS:ggpht.cn, DNS:*.ggpht.cn, DNS:urchin.com, DNS:*.urchin.com, DNS:youtu.be, DNS:youtube.com, DNS:*.youtube.com, DNS:youtubeeducation.com, DNS:*.youtubeeducation.com, DNS:youtubekids.com, DNS:*.youtubekids.com, DNS:yt.be, DNS:*.yt.be, DNS:android.clients.google.com, DNS:developer.android.google.cn, DNS:developers.android.google.cn, DNS:source.android.google.cn
+X509v3 Certificate Policies:Policy: 2.23.140.1.2.1
+Policy: 1.3.6.1.4.1.11129.2.5.3
+
+X509v3 CRL Distribution Points:
+Full Name:
+  URI:http://crls.pki.goog/gts1c3/fVJxbV-Ktmk.crl
+
+1.3.6.1.4.1.11129.2.4.2:......u...^.h.O.l..._N>Z.....j^.;.. D\\*s.............F0D. I....\".s...Y%..'.l&`.s.E.._w..?S. 7..X.Mq..............G..=..>3.%..v.F.U.u.. 0...i..}.,At..I.....p.mG.............G0E. |..B...
+w5...)q..6..E...F.F..!...!...ZE.k.....W5}.b:...*.&s#..u.r..
+Start date:Mar 21 02:22:46 2022 GMT
+Expire date:Jan 2 15:04:05 2006 GMT
+Signature:18:4e:e5:71:3d:96:27:73:e4:4f:c3:4f:e2:f8:25:19:76:5b:54:ac:41:7c:bf:5d:f9:7c:1d:4b:7c:64:b7:7f:85:61:c3:b4:ab:31:bb:d3:58:1a:50:1a:a9:90:d6:43:33:ac:7e:ac:8e:73:2b:23:82:c4:5a:09:ef:c7:d7:70:91:60:e3:45:01:f0:f1:88:10:9c:dc:58:25:32:d0:4f:f8:29:9c:94:a5:c6:3a:f6:f7:49:f1:29:a2:a2:47:48:e1:08:ed:68:b4:97:6b:3f:de:df:3d:7d:4b:39:a4:2e:e5:28:74:01:cd:0b:5d:9a:27:b9:f5:f0:4f:ac:9b:d8:ad:16:42:7a:d5:c9:1a:98:9d:ea:dd:96:c0:19:8e:02:0c:73:3a:7c:67:3f:33:35:4f:29:1b:3c:4c:8f:b2:a5:f4:dc:b8:2f:ef:51:dc:2f:b6:ca:74:ac:79:76:6d:83:cc:6c:31:91:ba:24:a2:91:f7:5f:1b:21:7e:5f:94:97:12:8e:1c:50:3b:48:d3:24:94:f5:5c:f3:31:83:1e:cb:fe:6a:3d:14:cb:0a:56:37:2e:bc:47:e4:d6:11:98:11:8a:7f:13:0c:10:a3:2a:1e:2a:54:6e:32:07:47:55:8d:ce:dc:d0:1a:05:2f:c5:a2:3e:dc:4f:e0:a0:e7:9a:c8:
+Cert:-----BEGIN CERTIFICATE-----
+MIIN1TCCDL2gAwIBAgIQRHk2Kk6S7LsSAAAAAAXwgDANBgkqhkiG9w0BAQsFADBG
+MQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExM
+QzETMBEGA1UEAxMKR1RTIENBIDFDMzAeFw0yMjAzMjEwMjIyNDZaFw0yMjA2MTMw
+MjIyNDVaMBcxFTATBgNVBAMMDCouZ29vZ2xlLmNvbTBZMBMGByqGSM49AgEGCCqG
+SM49AwEHA0IABCxNvVbzAYuhQo57RMPPbLhkhjcTONi6h+dbsmhyMnreU+mjQwPF
+plgf7dliILLg5+avsyn9YKIkPXgYMs6Wdi2jggu3MIILszAOBgNVHQ8BAf8EBAMC
+B4AwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU
+n6IrY43W4zC3jbzl+4JRVDqt0I0wHwYDVR0jBBgwFoAUinR/r4XN7pXNPZzQ4kYU
+83E1HScwagYIKwYBBQUHAQEEXjBcMCcGCCsGAQUFBzABhhtodHRwOi8vb2NzcC5w
+a2kuZ29vZy9ndHMxYzMwMQYIKwYBBQUHMAKGJWh0dHA6Ly9wa2kuZ29vZy9yZXBv
+L2NlcnRzL2d0czFjMy5kZXIwggloBgNVHREEgglfMIIJW4IMKi5nb29nbGUuY29t
+ghYqLmFwcGVuZ2luZS5nb29nbGUuY29tggkqLmJkbi5kZXaCEiouY2xvdWQuZ29v
+Z2xlLmNvbYIYKi5jcm93ZHNvdXJjZS5nb29nbGUuY29tghgqLmRhdGFjb21wdXRl
+Lmdvb2dsZS5jb22CCyouZ29vZ2xlLmNhggsqLmdvb2dsZS5jbIIOKi5nb29nbGUu
+Y28uaW6CDiouZ29vZ2xlLmNvLmpwgg4qLmdvb2dsZS5jby51a4IPKi5nb29nbGUu
+Y29tLmFygg8qLmdvb2dsZS5jb20uYXWCDyouZ29vZ2xlLmNvbS5icoIPKi5nb29n
+bGUuY29tLmNvgg8qLmdvb2dsZS5jb20ubXiCDyouZ29vZ2xlLmNvbS50coIPKi5n
+b29nbGUuY29tLnZuggsqLmdvb2dsZS5kZYILKi5nb29nbGUuZXOCCyouZ29vZ2xl
+LmZyggsqLmdvb2dsZS5odYILKi5nb29nbGUuaXSCCyouZ29vZ2xlLm5sggsqLmdv
+b2dsZS5wbIILKi5nb29nbGUucHSCEiouZ29vZ2xlYWRhcGlzLmNvbYIPKi5nb29n
+bGVhcGlzLmNughEqLmdvb2dsZXZpZGVvLmNvbYIMKi5nc3RhdGljLmNughAqLmdz
+dGF0aWMtY24uY29tgg9nb29nbGVjbmFwcHMuY26CESouZ29vZ2xlY25hcHBzLmNu
+ghFnb29nbGVhcHBzLWNuLmNvbYITKi5nb29nbGVhcHBzLWNuLmNvbYIMZ2tlY25h
+cHBzLmNugg4qLmdrZWNuYXBwcy5jboISZ29vZ2xlZG93bmxvYWRzLmNughQqLmdv
+b2dsZWRvd25sb2Fkcy5jboIQcmVjYXB0Y2hhLm5ldC5jboISKi5yZWNhcHRjaGEu
+bmV0LmNughByZWNhcHRjaGEtY24ubmV0ghIqLnJlY2FwdGNoYS1jbi5uZXSCC3dp
+ZGV2aW5lLmNugg0qLndpZGV2aW5lLmNughFhbXBwcm9qZWN0Lm9yZy5jboITKi5h
+bXBwcm9qZWN0Lm9yZy5jboIRYW1wcHJvamVjdC5uZXQuY26CEyouYW1wcHJvamVj
+dC5uZXQuY26CF2dvb2dsZS1hbmFseXRpY3MtY24uY29tghkqLmdvb2dsZS1hbmFs
+eXRpY3MtY24uY29tghdnb29nbGVhZHNlcnZpY2VzLWNuLmNvbYIZKi5nb29nbGVh
+ZHNlcnZpY2VzLWNuLmNvbYIRZ29vZ2xldmFkcy1jbi5jb22CEyouZ29vZ2xldmFk
+cy1jbi5jb22CEWdvb2dsZWFwaXMtY24uY29tghMqLmdvb2dsZWFwaXMtY24uY29t
+ghVnb29nbGVvcHRpbWl6ZS1jbi5jb22CFyouZ29vZ2xlb3B0aW1pemUtY24uY29t
+ghJkb3VibGVjbGljay1jbi5uZXSCFCouZG91YmxlY2xpY2stY24ubmV0ghgqLmZs
+cy5kb3VibGVjbGljay1jbi5uZXSCFiouZy5kb3VibGVjbGljay1jbi5uZXSCDmRv
+dWJsZWNsaWNrLmNughAqLmRvdWJsZWNsaWNrLmNughQqLmZscy5kb3VibGVjbGlj
+ay5jboISKi5nLmRvdWJsZWNsaWNrLmNughFkYXJ0c2VhcmNoLWNuLm5ldIITKi5k
+YXJ0c2VhcmNoLWNuLm5ldIIdZ29vZ2xldHJhdmVsYWRzZXJ2aWNlcy1jbi5jb22C
+HyouZ29vZ2xldHJhdmVsYWRzZXJ2aWNlcy1jbi5jb22CGGdvb2dsZXRhZ3NlcnZp
+Y2VzLWNuLmNvbYIaKi5nb29nbGV0YWdzZXJ2aWNlcy1jbi5jb22CF2dvb2dsZXRh
+Z21hbmFnZXItY24uY29tghkqLmdvb2dsZXRhZ21hbmFnZXItY24uY29tghhnb29n
+bGVzeW5kaWNhdGlvbi1jbi5jb22CGiouZ29vZ2xlc3luZGljYXRpb24tY24uY29t
+giQqLnNhZmVmcmFtZS5nb29nbGVzeW5kaWNhdGlvbi1jbi5jb22CFmFwcC1tZWFz
+dXJlbWVudC1jbi5jb22CGCouYXBwLW1lYXN1cmVtZW50LWNuLmNvbYILZ3Z0MS1j
+bi5jb22CDSouZ3Z0MS1jbi5jb22CC2d2dDItY24uY29tgg0qLmd2dDItY24uY29t
+ggsybWRuLWNuLm5ldIINKi4ybWRuLWNuLm5ldIIUZ29vZ2xlZmxpZ2h0cy1jbi5u
+ZXSCFiouZ29vZ2xlZmxpZ2h0cy1jbi5uZXSCDGFkbW9iLWNuLmNvbYIOKi5hZG1v
+Yi1jbi5jb22CDSouZ3N0YXRpYy5jb22CFCoubWV0cmljLmdzdGF0aWMuY29tggoq
+Lmd2dDEuY29tghEqLmdjcGNkbi5ndnQxLmNvbYIKKi5ndnQyLmNvbYIOKi5nY3Au
+Z3Z0Mi5jb22CECoudXJsLmdvb2dsZS5jb22CFioueW91dHViZS1ub2Nvb2tpZS5j
+b22CCyoueXRpbWcuY29tggthbmRyb2lkLmNvbYINKi5hbmRyb2lkLmNvbYITKi5m
+bGFzaC5hbmRyb2lkLmNvbYIEZy5jboIGKi5nLmNuggRnLmNvggYqLmcuY2+CBmdv
+by5nbIIKd3d3Lmdvby5nbIIUZ29vZ2xlLWFuYWx5dGljcy5jb22CFiouZ29vZ2xl
+LWFuYWx5dGljcy5jb22CCmdvb2dsZS5jb22CEmdvb2dsZWNvbW1lcmNlLmNvbYIU
+Ki5nb29nbGVjb21tZXJjZS5jb22CCGdncGh0LmNuggoqLmdncGh0LmNuggp1cmNo
+aW4uY29tggwqLnVyY2hpbi5jb22CCHlvdXR1LmJlggt5b3V0dWJlLmNvbYINKi55
+b3V0dWJlLmNvbYIUeW91dHViZWVkdWNhdGlvbi5jb22CFioueW91dHViZWVkdWNh
+dGlvbi5jb22CD3lvdXR1YmVraWRzLmNvbYIRKi55b3V0dWJla2lkcy5jb22CBXl0
+LmJlggcqLnl0LmJlghphbmRyb2lkLmNsaWVudHMuZ29vZ2xlLmNvbYIbZGV2ZWxv
+cGVyLmFuZHJvaWQuZ29vZ2xlLmNughxkZXZlbG9wZXJzLmFuZHJvaWQuZ29vZ2xl
+LmNughhzb3VyY2UuYW5kcm9pZC5nb29nbGUuY24wIQYDVR0gBBowGDAIBgZngQwB
+AgEwDAYKKwYBBAHWeQIFAzA8BgNVHR8ENTAzMDGgL6AthitodHRwOi8vY3Jscy5w
+a2kuZ29vZy9ndHMxYzMvZlZKeGJWLUt0bWsuY3JsMIIBAwYKKwYBBAHWeQIEAgSB
+9ASB8QDvAHUA36Veq2iCTx9sre64X04+WurNohKkal6OOxLAIERcKnMAAAF/qn/I
+8gAABAMARjBEAiBJobYPyyLcc8m22VklCBIn32wmYMpzr0Uap1936aw/UwIgN8HS
+WMVNcbcWmZaHAxLpgbDLBo/IR4CJPfmXPjMXJQMAdgBGpVXrdfqRIDC1oolp9PN9
+ESxBdL79SbiFq/L8cP5tRwAAAX+qf8rZAAAEAwBHMEUCIHwb+kIM1/cKdzUI/7Yp
+cZj9NouoRarDGUb6Rr6EIeusAiEAz7NaRRtrBfYGvLhXNX3XYjrCqOQq5yZzI4O/
+dQJy2JAwDQYJKoZIhvcNAQELBQADggEBABhO5XE9lidz5E/DT+L4JRl2W1SsQXy/
+Xfl8HUt8ZLd/hWHDtKsxu9NYGlAaqZDWQzOsfqyOcysjgsRaCe/H13CRYONFAfDx
+iBCc3FglMtBP+CmclKXGOvb3SfEpoqJHSOEI7Wi0l2s/3t89fUs5pC7lKHQBzQtd
+mie59fBPrJvYrRZCetXJGpid6t2WwBmOAgxzOnxnPzM1TykbPEyPsqX03Lgv71Hc
+L7bKdKx5dm2DzGwxkbokopH3Xxshfl+UlxKOHFA7SNMklPVc8zGDHsv+aj0UywpW
+Ny68R+TWEZgRin8TDBCjKh4qVG4yB0dVjc7c0BoFL8WiPtxP4KDnmsg=
+-----END CERTIFICATE-----
+
+

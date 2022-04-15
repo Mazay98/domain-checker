@@ -1,0 +1,89 @@
+default:
+  tags:
+    - go
+    - shell
+
+variables:
+  NOMAD_TOKEN: $LA_NOMAD_TOKEN
+  NOMAD_ADDR: $LA_NOMAD_ADDR
+
+stages:
+  - quality
+  - build
+  - push
+  - deploy
+
+lint:
+  image: registry.lucky-team.pro/luckyads/go.docker-images/alpine:1.18.0-v2
+  tags:
+    - docker
+  stage: quality
+  script:
+    - make lint
+
+fulltest:
+  image: registry.lucky-team.pro/luckyads/go.docker-images/alpine:1.18.0-v2
+  tags:
+    - docker
+  stage: quality
+  script:
+    - make fulltest
+
+build:
+  image: registry.lucky-team.pro/luckyads/go.docker-images/alpine:1.18.0-v2
+  tags:
+    - docker
+  stage: build
+  script:
+    - make build
+
+push:
+  tags:
+    - shell
+  stage: push
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u "$CI_REGISTRY_USER" --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+  script:
+    - make docker-build-push-image VERSION=$CI_COMMIT_TAG
+  only:
+    - tags
+
+ru_production:
+  stage: deploy
+  script:
+    - >
+      levant deploy -force -force-count
+      -var-file=./deployments/nomad/ru/production.yaml
+      -var tag=$CI_COMMIT_TAG
+      ./deployments/nomad/template.hcl || FAILED=1
+    -  FAILED=$FAILED ./scripts/ci/slack.sh && exit $FAILED
+  only:
+    - /^v([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
+  when: manual
+  variables:
+    SLACK_TOKEN: $LA_PRODUCTION_SLACK_TOKEN
+    NOMAD_REGION: ru-01
+  environment:
+    name: ru
+    deployment_tier: production
+
+sg_production:
+  stage: deploy
+  script:
+    - >
+      levant deploy -force -force-count
+      -var-file=./deployments/nomad/sg/production.yaml
+      -var tag=$CI_COMMIT_TAG
+      ./deployments/nomad/template.hcl || FAILED=1
+    -  FAILED=$FAILED ./scripts/ci/slack.sh && exit $FAILED
+  only:
+    - /^v([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
+  when: manual
+  variables:
+    SLACK_TOKEN: $LA_PRODUCTION_SLACK_TOKEN
+    NOMAD_REGION: sg-02
+  environment:
+    name: sg
+    deployment_tier: production

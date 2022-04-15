@@ -1,0 +1,6 @@
+*.6
+*.o
+src/_cgo_*
+src/_obj/
+
+.idea/
