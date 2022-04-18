@@ -20,11 +20,14 @@ type (
 		Postgres Postgres `group:"PostgreSQL option" namespace:"postgres" env-namespace:"POSTGRES"`
 		HTTP     Server   `group:"HTTP server options" namespace:"http" env-namespace:"HTTP"`
 		Tickers  Tickers  `group:"Tickers options" namespace:"tickers" env-namespace:"TICKER"`
+
+		EnableEasylist bool `long:"enable_easylist" env:"ENABLE_EASYLIST" description:"Check for EasyList enabled"`
 	}
 
 	// Tickers struct of timi duration tickers.
 	Tickers struct {
-		SSLChecker time.Duration `long:"ssl_checker_duration" env:"SSL_CHECKER" description:"Time for tick ssl checker daemon" default:"10m"`
+		SSLChecker      time.Duration `long:"ssl_checker_duration" env:"SSL_CHECKER" description:"Time for tick ssl checker daemon" default:"10m"`
+		EasyListChecker time.Duration `long:"easylist_checker_duration" env:"EASYLIST_CHECKER" description:"Time for tick easylist checker daemon" default:"5m"` //nolint:lll
 	}
 
 	// Logger contains logger configuration.

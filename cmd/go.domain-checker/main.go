@@ -73,22 +73,42 @@ func main() {
 	domainCheckerService := domain.New(&pgStorage, logger, appConfig.Region)
 
 	gr.Go(func() error {
-		if err := updateDomains(appctx, logger, domainCheckerService); err != nil {
-			return err
-		}
-
-		tch := time.Tick(appConfig.Tickers.SSLChecker)
-		for range tch {
-			if err := updateDomains(appctx, logger, domainCheckerService); err != nil {
-				return err
-			}
-		}
-
-		return nil
+		return updateDomainsInBackground(appctx, logger, domainCheckerService, appConfig.Tickers.SSLChecker)
 	})
+
+	if appConfig.EnableEasylist {
+		gr.Go(func() error {
+			return banDomainsInBackground(appctx, logger, domainCheckerService, appConfig.Tickers.EasyListChecker)
+		})
+	}
 
 	if err := gr.Wait(); err != nil {
 		logger.Error("application exited with error", zap.Error(err))
+	}
+}
+
+func updateDomainsInBackground(
+	ctx context.Context,
+	logger *zap.Logger,
+	domainCheckerService domain.Service,
+	duration time.Duration,
+) error {
+	if err := updateDomains(ctx, logger, domainCheckerService); err != nil {
+		return err
+	}
+
+	tch := time.NewTicker(duration)
+	defer tch.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			return nil
+		case <-tch.C:
+			if err := updateDomains(ctx, logger, domainCheckerService); err != nil {
+				return err
+			}
+		}
 	}
 }
 
@@ -98,7 +118,47 @@ func updateDomains(ctx context.Context, logger *zap.Logger, domainCheckerService
 	if err := domainCheckerService.UpdateDomains(ctx); err != nil {
 		return fmt.Errorf("failed to update domains ssl %w", err)
 	}
-	logger.Info("update ssl - successful", zap.Duration("duration", time.Since(start)))
+	logger.Info("update ssl", zap.Duration("duration", time.Since(start)))
+
+	return nil
+}
+
+func banDomainsInBackground(
+	ctx context.Context,
+	logger *zap.Logger,
+	domainCheckerService domain.Service,
+	duration time.Duration,
+) error {
+	if err := banDomains(ctx, logger, domainCheckerService); err != nil {
+		return err
+	}
+
+	tch := time.NewTicker(duration)
+	defer tch.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			return nil
+		case <-tch.C:
+			if err := banDomains(ctx, logger, domainCheckerService); err != nil {
+				return err
+			}
+		}
+	}
+}
+
+func banDomains(ctx context.Context, logger *zap.Logger, domainCheckerService domain.Service) error {
+	start := time.Now()
+
+	count, err := domainCheckerService.BanDomains(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to ban domains %w", err)
+	}
+	logger.Info("baned domains",
+		zap.Duration("duration", time.Since(start)),
+		zap.Int("count", count),
+	)
 
 	return nil
 }

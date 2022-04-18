@@ -1,10 +1,13 @@
 package domain
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"net"
+	"net/http"
 	"regexp"
 	"strings"
 	"time"
@@ -16,7 +19,10 @@ import (
 	"gitlab.lucky-team.pro/luckyads/go.domain-checker/internal/storage"
 )
 
-const parseDateFormat = "Jan 2 15:04:05 2006 MST"
+const (
+	parseDateFormat = "Jan 2 15:04:05 2006 MST"
+	adBlockBansList = "https://easylist-downloads.adblockplus.org/ruadlist+easylist.txt"
+)
 
 var (
 	errMissingExpireDate = fmt.Errorf("expire date is not found in cert info")
@@ -169,4 +175,57 @@ func getCertInfo(certs []string) (entities.CertInfo, error) {
 	}
 
 	return entities.CertInfo{}, errNoCertInfo
+}
+
+// BanDomains bans domains that are found in easylist.
+func (s *Service) BanDomains(ctx context.Context) (int, error) {
+	domains, err := s.storage.GetDomains(ctx)
+	if err != nil {
+		return 0, fmt.Errorf("failed to get domains list: %w", err)
+	}
+
+	easylistBannedDomains, err := getEasyList()
+	if err != nil {
+		return 0, fmt.Errorf("failed to get easylist: %w", err)
+	}
+
+	bannedDomains := findDomainsBanedByEasylist(domains, easylistBannedDomains)
+
+	if len(bannedDomains) == 0 {
+		return 0, nil
+	}
+
+	if err = s.storage.BanDomainsByIDs(ctx, bannedDomains); err != nil {
+		return 0, fmt.Errorf("failed to ban domains: %w", err)
+	}
+
+	return len(bannedDomains), nil
+}
+
+func getEasyList() ([]byte, error) {
+	resp, err := http.Get(adBlockBansList)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get easylist info: %w", err)
+	}
+	defer resp.Body.Close() //nolint:errcheck
+
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read easylist response: %w", err)
+	}
+
+	return b, nil
+}
+
+func findDomainsBanedByEasylist(domains entities.Domains, easylistBannedDomains []byte) []uint64 {
+	bannedIds := make([]uint64, 0)
+
+	for id := range domains {
+		domain := domains[id]
+		if r := bytes.Index(easylistBannedDomains, []byte(domain.Name)); r != -1 {
+			bannedIds = append(bannedIds, domain.ID)
+		}
+	}
+
+	return bannedIds
 }

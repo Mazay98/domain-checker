@@ -1,0 +1,99 @@
+[Adblock Plus 2.0]
+! Checksum: IbC9rdB/ipORHBCeJ98Fgw
+! Version: 202204140946
+! Title: RuAdList+EasyList
+! Last modified: 14 Apr 2022 09:46 UTC
+! Expires: 1 days (update frequency)
+! Homepage: https://forums.lanik.us/viewforum.php?f=102
+!
+! RuAdList and EasyList combination subscription
+!
+! *** ruadlist:advblock.txt ***
+!
+! Дополнительный региональный фильтр RU AdList к фильтру EasyList
+! Лицензия CC-BY: http://creativecommons.org/licenses/by/3.0/
+! Проект создал Akuma (DemonSat) на основе списка фильтров denis-ovs.narod.ru.
+! Список содержит фрагменты списков MORPEH'а и Fanboy'я, результаты изучения
+! содержимого подписки UA-IX Banlist и некоторые правила из
+! Reek's Anti-Adblock Killer (https://github.com/reek/anti-adblock-killer)
+! В разное время над списком фильтров работали: denis-ovs, Akuma, Radik245.
+! На данный момент над списком работают Lain_13 и dimisa.
+!
+! Если на вашем любимом сайте осталась реклама или фильтр создаёт проблемы
+! в его работе, то свяжитесь с нами:
+! https://forums.lanik.us/viewforum.php?f=102
+!
+! = Сайты-попапы (самостоятельно открываются в новом окне) ====================
+! *** advblock/popup.txt ***
+! - Частные правила -----------------------------------------------------------
+$popup,domain=176.114.0.126|176.114.0.132|37.220.36.15|assiatv.com|cdnneedtv.ru|cdnpotok.com|freescreens.ru|hentai-share.tv|imgbase.ru|imgcach.ru|imgclick.ru|kolikbolik.top|oneliketv.com|payforpic.ru|picclick.ru|picclock.ru|picforall.ru|protonvideo.to|telecdn.net
+&utm_campaign=$popup,domain=itc.ua|sc2tv.ru
+.biqle.ru^$popup,domain=biqle.ru
+/*.php*clk$popup,domain=innal.top|rustorka.com|rustorka.net|rustorkacom.lib|tapochek.net
+/*utm_$popup,domain=stratege.ru
+/^https?://otzovik\.com/[^\s]{300,}/$popup,domain=otzovik.com
+/getaway/$popup,domain=mail.ru
+/go.php$popup,domain=piratca.net
+/redirect/cpa/*$popup,domain=rt02.ru
+|http://li.ru/go?$popup,domain=fishki.net
+||ad.adriver.ru^$popup,domain=gamebomb.ru|terrikon.com
+||admitad.com^$popup,domain=howdyho.net|izzylaif.com|onyxgame.com
+||catcut.net^$popup,domain=mobile-4at-obshenie.chatovod.ru|mobile-chat-obshenie.jimdo.com
+||com/?id=*&t=direct^$popup
+||com^$popup,domain=imageban.ru
+||ege-study.ru^$popup,domain=reshuege.ru|reshuoge.ru|sdamgia.ru
+||falcopartners.com^$popup,domain=uraltrack.net
+||gecid.com/inc/brclick.$popup
+||gemius.pl^$popup,domain=terrikon.com
+||getitbit.net/ads/$popup
+||goo.gl^$popup,domain=aces.gg|gamegpu.com|skachat-igri-besplatno.info|torrents-game.net|vsofte.biz
+||joker.win/*&offer_id=$popup
+||loot.bet^$popup,domain=hs-manacost.ru
+||m.acestream.net/plan/select?popup=noads$popup
+||mama.land^$popup,domain=comments.ua
+||motorpage.ru/click/$popup,domain=motorpage.ru
+||mp3albomov.net^$popup,domain=lossless-galaxy.ru
+||namba.kg^$popup,domain=namba.kg
+||namba.tj^$popup,domain=namba.tj
+||nutsbet.ru^$popup,domain=hs-manacost.ru
+||playground.ru/*/promo/$popup
+||tapochek.net/*.html|$popup,domain=tapochek.net
+||topofgames.com^*?path=$popup
+||torrentum.ru^$popup
+||trashbox.ru/r.php?$popup
+||tvua.biz/clictv$popup
+||umschool.net^$popup,domain=reshuege.ru|reshuoge.ru|sdamgia.ru
+||welcomegames.net^$popup
+||www.goha.ru/~$popup,domain=www.goha.ru
+!---------------------------Third-party advertisers---------------------------!
+||006a039c957c142bb.com^
+||00aaa2d81c1d174.com^
+||0210bb49cd.com^
+||0265331.com^
+||02aa19117f396e9.com^
+||0346420d60.com^
+||039ad0897e6da.com^
+||03ed9035a0801f.com^
+||awembd.com^
+||awempire.com^
+||awemwh.com^
+||awentw.com^
+||aweproto.com^
+||aweprotostatic.com^
+||aweprt.com^
+||awepsi.com^
+||awept.com^
+@@||ads.pinterest.com^$popup
+@@||ads.spotify.com^$popup
+@@||ads.taboola.com^$popup
+@@||ads.tiktok.com^$popup
+@@||gaynetwork.co.uk/Images/ads/bg/$image,~third-party
+@@||iafd.com/graphics/headshots/thumbs/th_iafd_ad.gif$~third-party
+@@||spankbang.com^*/prebid-ads.js$domain=spankbang.com
+! Anti-Adblock
+@@||gaybeeg.info^$generichide
+@@||milfzr.com^$generichide
+@@||pornbraze.com^$generichide
+@@||rule34hentai.net^$generichide
+@@||urlgalleries.net^$generichide
+! *** easylist:easylist_adult/adult_allowlist_popup.txt ***

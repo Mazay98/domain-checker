@@ -3,6 +3,7 @@ package postgres
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/jackc/pgx/v4/pgxpool"
 	"go.uber.org/zap"
@@ -89,6 +90,25 @@ func (s *Storage) UpdateDomainSSL(
 	`, certs, id)
 	if err != nil {
 		return fmt.Errorf("failed to update domain: %w", err)
+	}
+
+	return nil
+}
+
+// BanDomainsByIDs banned domains from id List.
+// Any error returned is internal.
+func (s *Storage) BanDomainsByIDs(ctx context.Context, domainIDList []uint64) error {
+	_, err := s.mainDB.Exec(ctx, `
+		UPDATE
+			system.domains
+		SET
+			banned_at = $1,
+			is_distributed = $2
+		WHERE
+			id = any($3)
+	`, time.Now(), false, domainIDList)
+	if err != nil {
+		return fmt.Errorf("failed to update domains: %w", err)
 	}
 
 	return nil

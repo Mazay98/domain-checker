@@ -35,6 +35,20 @@ func (m *MockCommon) EXPECT() *MockCommonMockRecorder {
 	return m.recorder
 }
 
+// BanDomainsByIDs mocks base method.
+func (m *MockCommon) BanDomainsByIDs(ctx context.Context, domainIDList []uint64) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "BanDomainsByIDs", ctx, domainIDList)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// BanDomainsByIDs indicates an expected call of BanDomainsByIDs.
+func (mr *MockCommonMockRecorder) BanDomainsByIDs(ctx, domainIDList interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BanDomainsByIDs", reflect.TypeOf((*MockCommon)(nil).BanDomainsByIDs), ctx, domainIDList)
+}
+
 // GetDomains mocks base method.
 func (m *MockCommon) GetDomains(ctx context.Context) (entities.Domains, error) {
 	m.ctrl.T.Helper()
