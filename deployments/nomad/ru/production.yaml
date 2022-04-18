@@ -2,9 +2,15 @@ region: "ru-01"
 datacenter: "ru-01-la"
 namespace: "production"
 count: 1
-canary_count: 0
 
 env: "production"
+app_region: "ru"
+logger_level: ""
+
+ticker_ssl_checker: "1h"
+ticker_easylist_checker: "5m"
+
+enable_easylist: true
 max_per_host: 1
 
 cpu_limit: 500

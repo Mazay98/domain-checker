@@ -2,9 +2,15 @@ region: "sg-02"
 datacenter: "sg-02-la"
 namespace: "production"
 count: 1
-canary_count: 0
 
 env: "production"
+app_region: "sg"
+logger_level: ""
+
+ticker_ssl_checker: "1h"
+ticker_easylist_checker: "5m"
+
+enable_easylist: false
 max_per_host: 1
 
 cpu_limit: 500

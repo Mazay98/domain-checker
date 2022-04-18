@@ -51,8 +51,13 @@ job "go-domain-checker" {
       }
 
       env {
-        ENV       = "[[.env]]"
-        HTTP_PORT = "6060"
+        ENV                     = "[[.env]]"
+        REGION                  = "[[.app_region]]"
+        LOGGER_LEVEL            = "[[.logger_level]]"
+        HTTP_PORT               = "6060"
+        TICKER_SSL_CHECKER      = "[[.ticker_ssl_checker]]"
+        TICKER_EASYLIST_CHECKER = "[[.ticker_easylist_checker]]"
+        ENABLE_EASYLIST         = "[[.enable_easylist]]"
       }
 
       vault {
