@@ -10,8 +10,15 @@ logger_level: ""
 ticker_ssl_checker: "1h"
 ticker_easylist_checker: "5m"
 
-enable_easylist: true
 max_per_host: 1
+
+balancers_ru:
+  - 62.76.25.27
+  - 62.76.25.28
+
+balancers_sg:
+  - 172.241.51.4
+  - 172.241.51.14
 
 cpu_limit: 500
 memory_limit: 500

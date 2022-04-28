@@ -13,15 +13,13 @@ import (
 type (
 	// AppConfig contains full configuration of the service.
 	AppConfig struct {
-		Env    environment.Env `long:"env" env:"ENV" description:"Environment application is running in" default:"local"`
-		Region string          `long:"region" env:"REGION" description:"Region application is running in" default:"ru"`
+		Env environment.Env `long:"env" env:"ENV" description:"Environment application is running in" default:"local"`
 
-		Logger   Logger   `group:"Logger options" namespace:"logger" env-namespace:"LOGGER"`
-		Postgres Postgres `group:"PostgreSQL option" namespace:"postgres" env-namespace:"POSTGRES"`
-		HTTP     Server   `group:"HTTP server options" namespace:"http" env-namespace:"HTTP"`
-		Tickers  Tickers  `group:"Tickers options" namespace:"tickers" env-namespace:"TICKER"`
-
-		EnableEasylist bool `long:"enable_easylist" env:"ENABLE_EASYLIST" description:"Check for EasyList enabled"`
+		Balancers Balancers `group:"Balancers option" namespace:"balancers" env-namespace:"BALANCERS" description:"List of balancers"`
+		Logger    Logger    `group:"Logger options" namespace:"logger" env-namespace:"LOGGER"`
+		Postgres  Postgres  `group:"PostgreSQL option" namespace:"postgres" env-namespace:"POSTGRES"`
+		HTTP      Server    `group:"HTTP server options" namespace:"http" env-namespace:"HTTP"`
+		Tickers   Tickers   `group:"Tickers options" namespace:"tickers" env-namespace:"TICKER"`
 	}
 
 	// Tickers struct of timi duration tickers.
@@ -46,6 +44,12 @@ type (
 	Postgres struct {
 		MainDBConnectionString string        `long:"maindb_connection_string" env:"MAINDB_CONNECTION_STRING" description:"PGX connection string to the maindDB" required:"true"` //nolint:lll
 		Timeout                time.Duration `long:"timeout" env:"TIMEOUT" description:"Timeout for queries" default:"1s"`
+	}
+
+	// Balancers contains list IP group by region.
+	Balancers struct {
+		Ru []string `long:"ru" env-delim:"," env:"RU" description:"IP list for balancer in ru region"`
+		Sg []string `long:"sg" env-delim:"," env:"SG" description:"IP list for balancer in sg region"`
 	}
 )
 

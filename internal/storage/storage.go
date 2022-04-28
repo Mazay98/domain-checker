@@ -15,7 +15,7 @@ type Common interface {
 	GetDomains(ctx context.Context) (entities.Domains, error)
 	// UpdateDomainSSL updates ssl info for domain.
 	// Any error returned is internal.
-	UpdateDomainSSL(ctx context.Context, id uint64, certs map[string]entities.CertInfo, region string) error
+	UpdateDomainSSL(ctx context.Context, id uint64, ssl entities.SSL) error
 	// BanDomainsByIDs banned domains from id List.
 	// Any error returned is internal.
 	BanDomainsByIDs(ctx context.Context, domainIDList []uint64) error

@@ -77,17 +77,16 @@ func (s *Storage) GetDomains(ctx context.Context) (entities.Domains, error) {
 func (s *Storage) UpdateDomainSSL(
 	ctx context.Context,
 	id uint64,
-	certs map[string]entities.CertInfo,
-	region string,
+	ssl entities.SSL,
 ) error {
 	_, err := s.mainDB.Exec(ctx, `
 		UPDATE
 			system.domains
 		SET
-			ssl = jsonb_set(ssl, '{`+region+`}', $1, true)::jsonb
+			ssl = $1
 		WHERE
 			id = $2
-	`, certs, id)
+	`, ssl, id)
 	if err != nil {
 		return fmt.Errorf("failed to update domain: %w", err)
 	}

@@ -57,7 +57,8 @@ job "go-domain-checker" {
         HTTP_PORT               = "6060"
         TICKER_SSL_CHECKER      = "[[.ticker_ssl_checker]]"
         TICKER_EASYLIST_CHECKER = "[[.ticker_easylist_checker]]"
-        ENABLE_EASYLIST         = "[[.enable_easylist]]"
+        BALANCERS_RU            = "[[range $index, $value := .balancers_ru]][[if ne $index 0]],[[end]][[$value]][[end]]"
+        BALANCERS_SG            = "[[range $index, $value := .balancers_sg]][[if ne $index 0]],[[end]][[$value]][[end]]"
       }
 
       vault {

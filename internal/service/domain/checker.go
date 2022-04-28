@@ -15,6 +15,7 @@ import (
 	"github.com/geozo-tech/go-curl"
 	"go.uber.org/zap"
 
+	"gitlab.lucky-team.pro/luckyads/go.domain-checker/internal/config"
 	"gitlab.lucky-team.pro/luckyads/go.domain-checker/internal/entities"
 	"gitlab.lucky-team.pro/luckyads/go.domain-checker/internal/storage"
 )
@@ -32,18 +33,31 @@ var (
 
 // Service is designed to work with domains.
 type Service struct {
-	storage storage.Common
-	logger  *zap.Logger
-	region  string
+	storage   storage.Common
+	logger    *zap.Logger
+	balancers config.Balancers
 }
 
 // New returns new Service ready to use.
-func New(storage storage.Common, logger *zap.Logger, region string) Service {
-	return Service{
-		storage: storage,
-		logger:  logger,
-		region:  region,
+func New(storage storage.Common, logger *zap.Logger, balancers config.Balancers) (Service, error) {
+	if !isValidIPList(balancers.Sg) || !isValidIPList(balancers.Ru) {
+		return Service{}, errors.New("invalid balancers") //nolint:goerr113
 	}
+	return Service{
+		storage:   storage,
+		logger:    logger,
+		balancers: balancers,
+	}, nil
+}
+
+func isValidIPList(ipList []string) bool {
+	for _, ip := range ipList {
+		if net.ParseIP(ip) == nil {
+			return false
+		}
+	}
+
+	return true
 }
 
 // UpdateDomains update ssl for domains.
@@ -53,23 +67,18 @@ func (s Service) UpdateDomains(ctx context.Context) error {
 		return fmt.Errorf("failed to get domains list: %w", err)
 	}
 
+	if len(s.balancers.Ru) == 0 && len(s.balancers.Sg) == 0 {
+		s.logger.Info("empty balancer list")
+		return nil
+	}
+
 	for _, domain := range domains { //nolint:gocritic
-		ipList, err := net.LookupIP(domain.Name)
-		if err != nil {
-			s.logger.Error(
-				"failed to get domain's balancers list",
-				zap.String("domain", domain.Name),
-				zap.Error(err),
-			)
-			continue
+		sslConfig := entities.SSL{
+			"ru": s.getCertList(domain.Name, s.balancers.Ru),
+			"sg": s.getCertList(domain.Name, s.balancers.Sg),
 		}
 
-		sslConfig := s.getCertList(domain.Name, ipList)
-		if len(sslConfig) == 0 {
-			continue
-		}
-
-		if err := s.storage.UpdateDomainSSL(ctx, domain.ID, sslConfig, s.region); err != nil {
+		if err := s.storage.UpdateDomainSSL(ctx, domain.ID, sslConfig); err != nil {
 			return fmt.Errorf("failed to update %q ssl info: %w", domain.Name, err)
 		}
 	}
@@ -78,21 +87,20 @@ func (s Service) UpdateDomains(ctx context.Context) error {
 }
 
 // getCertList return list of certs holds IP -> entities.CertInfo.
-func (s Service) getCertList(domain string, ipList []net.IP) map[string]entities.CertInfo {
+func (s Service) getCertList(domain string, ipList []string) map[string]entities.CertInfo {
 	certList := make(map[string]entities.CertInfo)
 	for _, ip := range ipList {
-		sIP := ip.String()
-		certInfo, err := getSSLInfo(sIP, domain)
+		certInfo, err := getSSLInfo(ip, domain)
 		if err != nil {
 			s.logger.Error("failed to find certificate info",
 				zap.String("domain", domain),
-				zap.String("ip", sIP),
+				zap.String("ip", ip),
 				zap.Error(err),
 			)
 			continue
 		}
 
-		certList[sIP] = certInfo
+		certList[ip] = certInfo
 		s.logger.Info("updated domain's certificate info", zap.String("domain", domain))
 	}
 

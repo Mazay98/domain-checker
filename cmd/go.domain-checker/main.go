@@ -70,17 +70,19 @@ func main() {
 		return httpServer.Serve(appctx)
 	})
 
-	domainCheckerService := domain.New(&pgStorage, logger, appConfig.Region)
+	domainCheckerService, err := domain.New(&pgStorage, logger, appConfig.Balancers)
+	if err != nil {
+		logger.Error("failed to create domain service", zap.Error(err))
+		return
+	}
 
 	gr.Go(func() error {
 		return updateDomainsInBackground(appctx, logger, domainCheckerService, appConfig.Tickers.SSLChecker)
 	})
 
-	if appConfig.EnableEasylist {
-		gr.Go(func() error {
-			return banDomainsInBackground(appctx, logger, domainCheckerService, appConfig.Tickers.EasyListChecker)
-		})
-	}
+	gr.Go(func() error {
+		return banDomainsInBackground(appctx, logger, domainCheckerService, appConfig.Tickers.EasyListChecker)
+	})
 
 	if err := gr.Wait(); err != nil {
 		logger.Error("application exited with error", zap.Error(err))

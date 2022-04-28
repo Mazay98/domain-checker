@@ -65,15 +65,15 @@ func (mr *MockCommonMockRecorder) GetDomains(ctx interface{}) *gomock.Call {
 }
 
 // UpdateDomainSSL mocks base method.
-func (m *MockCommon) UpdateDomainSSL(ctx context.Context, id uint64, certs map[string]entities.CertInfo, region string) error {
+func (m *MockCommon) UpdateDomainSSL(ctx context.Context, id uint64, ssl entities.SSL) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateDomainSSL", ctx, id, certs, region)
+	ret := m.ctrl.Call(m, "UpdateDomainSSL", ctx, id, ssl)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // UpdateDomainSSL indicates an expected call of UpdateDomainSSL.
-func (mr *MockCommonMockRecorder) UpdateDomainSSL(ctx, id, certs, region interface{}) *gomock.Call {
+func (mr *MockCommonMockRecorder) UpdateDomainSSL(ctx, id, ssl interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateDomainSSL", reflect.TypeOf((*MockCommon)(nil).UpdateDomainSSL), ctx, id, certs, region)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateDomainSSL", reflect.TypeOf((*MockCommon)(nil).UpdateDomainSSL), ctx, id, ssl)
 }
